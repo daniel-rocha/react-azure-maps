@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AzureMapDrawingLayerProvider should create and render AzureMapDrawingLayerProvider 1`] = `<div />`;

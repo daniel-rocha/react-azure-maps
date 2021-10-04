@@ -35,7 +35,7 @@ export default {
     include: "src/**",
   },
   plugins: [
-    externals({ peerDeps: true, deps: true, exclude: "azure-maps-control" }),
+    externals({ peerDeps: true, deps: true, exclude: ["azure-maps-control", "azure-maps-drawing-tools"] }),
     replace({
       "process.env.NODE_ENV": JSON.stringify(env),
       preventAssignment: true,

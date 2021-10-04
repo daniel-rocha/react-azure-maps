@@ -9,12 +9,14 @@ class DataSource {
 module.exports = {
   Map: jest.fn(() => ({
     controls: {
-      add: jest.fn()
+      add: jest.fn(),
+      remove: jest.fn()
     },
     events: {
       add: jest.fn((eventName, callback = () => {}) => {
         callback()
-      })
+      }),
+      remove: jest.fn()
     },
     imageSprite: {
       add: jest.fn(),

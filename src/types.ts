@@ -35,6 +35,7 @@ import atlas, {
   LayerOptions,
   VectorTileSourceOptions
 } from 'azure-maps-control'
+import { drawing, DrawingManagerOptions, DrawingToolbarOptions } from 'azure-maps-drawing-tools'
 
 export type IAzureMapOptions = ServiceOptions &
   StyleOptions &
@@ -216,6 +217,19 @@ export type IAzureLayerStatefulProviderProps = {
   lifecycleEvents?: IAzureMapLifecycleEvent | any
 }
 
+export type IAzureDrawingLayerStatefulProviderProps = {
+  // type of drawing layer to customize
+  type: "lineLayer" | "polygonLayer" | "polygonOutlineLayer" | "pointLayer"
+  options?:
+    | (SymbolLayerOptions &
+        LineLayerOptions &
+        PolygonLayerOptions &
+        LayerOptions)
+    | Options
+  events?: IAzureMapLayerEvent | any
+  lifecycleEvents?: IAzureMapLifecycleEvent | any
+}
+
 export type IAzureMapLayerLifecycleEvents = 'layeradded' | 'layerremoved'
 
 export type IAzureMapEventsType =
@@ -319,6 +333,38 @@ export type IAzureMapFeature = {
     | atlas.data.Position[][]
     | atlas.data.Position[][][]
   setProperties?: Options
+}
+
+// DRAWING MODULE:
+export type DrawingManagerType = drawing.DrawingManager
+export type IAzureDrawingManagerDrawingEventType = 
+  | 'drawingchanged'
+  | 'drawingchanging'
+  | 'drawingcomplete'
+  | 'drawingstarted'
+
+export type IAzureDrawingManagerModeEventType = 'drawingmodechanged'
+export type IAzureDrawingManagerEventType = IAzureDrawingManagerDrawingEventType | IAzureDrawingManagerModeEventType
+
+export type IAzureDrawingManagerEvent = {
+  [property in IAzureDrawingManagerDrawingEventType]?: (e: atlas.Shape) => void
+} & {
+  [property in IAzureDrawingManagerModeEventType]?: (a: drawing.DrawingMode) => void
+}
+
+export interface IAzureMapDrawingManagerProps {
+  drawingManagerRef: drawing.DrawingManager | null
+}
+
+export interface IAzureDrawingManagerStatefulProviderProps {
+  options: Omit<DrawingManagerOptions, 'toolbar'> & { 'toolbar'?: DrawingToolbarOptions }
+  events?: IAzureDrawingManagerEvent
+  children?: 
+    | Array<IAzureDataSourceChildren | null> 
+    | Array<ReactElement<IAzureDrawingLayerStatefulProviderProps> | null>
+    | IAzureDataSourceChildren
+    | ReactElement<IAzureDrawingLayerStatefulProviderProps>
+    | null
 }
 
 export type IAzureMapLayerProps = IAzureMapLayerContextState

@@ -18,6 +18,16 @@ export {
   AzureMapLayerConsumer,
   AzureMapLayerProvider
 } from './contexts/AzureMapLayerContext'
+export {
+  AzureMapDrawingManagerContext,
+  AzureMapDrawingManagerConsumer,
+  AzureMapDrawingManagerProvider
+} from './contexts/AzureMapDrawingManagerContext'
+export {
+  AzureMapDrawingLayerContext,
+  AzureMapDrawingLayerConsumer,
+  AzureMapDrawingLayerProvider
+} from './contexts/AzureMapDrawingLayerContext'
 export { default as AzureMapPopup } from './components/AzureMapPopup/AzureMapPopup'
 export { default as useCreatePopup } from './components/AzureMapPopup/useCreateAzureMapPopup'
 
