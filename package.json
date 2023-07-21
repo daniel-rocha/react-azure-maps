@@ -119,6 +119,7 @@
   },
   "peerDependencies": {
     "azure-maps-control": "2.0.32",
+    "azure-maps-indoor": "^0.1.2",
     "guid-typescript": "^1.0.9",
     "mapbox-gl": "^1.10.0",
     "react": "^17.0.2 || ^18.0.0",
@@ -126,6 +127,7 @@
   },
   "dependencies": {
     "azure-maps-control": "2.0.32",
+    "azure-maps-indoor": "^0.1.2",
     "guid-typescript": "^1.0.9",
     "mapbox-gl": "^1.10.0"
   }
